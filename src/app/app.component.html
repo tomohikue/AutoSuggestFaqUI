@@ -1,0 +1,43 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    ご質問をどうぞ
+  </h1>
+</div>
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="ご質問" aria-label="質問" [matAutocomplete]="auto" [formControl]="stateCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let state of filteredStates | async" [value]="state.name">
+        <span>{{ state.name }}</span> 
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <br />
+
+</form>
+
+<br/>
+<div class="example-form2">
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let item of Answerdatas" >
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ item.question }}
+        </mat-panel-title>
+        <mat-panel-description>
+          近似率:{{ item.score }}%
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <textarea matInput placeholder="Answer" matTextareaAutosize >
+          {{ item.answer }}
+
+        </textarea>
+      </mat-form-field>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
